@@ -11,12 +11,26 @@
     <section class="delivery__section">
       <div class="container">
         <form class="delivery__form" id="DeliveryForm">
-          <div class="form__name-wrapper">
+          <div class="form__cities block-column">
+            <label for="CitiesInput" class="cities__label">
+              Recipient city:
+            </label>
+            <input type="text" class="cities__input" id="CitiesInput" />
+          </div>
+          <!-- /.form__cities -->
+
+          <div class="cities__list-wrapper">
+            <ul class="cities__list"></ul>
+          </div>
+          <!-- /.cities__list-wrapper -->
+
+          <div class="form__name-wrapper block-column">
             <label for="NameInput" class="name__label">Name:</label>
             <input type="text" class="name__input" id="NameInput" required />
           </div>
           <!-- /.form__name-wrapper -->
-          <div class="form__sername-wrapper">
+
+          <div class="form__sername-wrapper block-column">
             <label for="SernameInput" class="sername__label">Sername:</label>
             <input
               type="text"
@@ -26,7 +40,8 @@
             />
           </div>
           <!-- /.form__sername-wrapper -->
-          <div class="form__phone-wrapper">
+
+          <div class="form__phone-wrapper block-column">
             <label for="PhoneInput" class="phone__label">phone:</label>
             <input
               type="tel"
@@ -40,5 +55,7 @@
       </div>
       <!-- /.container -->
     </section>
+
+    <script src="./js/script.js"></script>
   </body>
 </html>
