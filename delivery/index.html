@@ -8,14 +8,17 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <section class="delivery__section">
+    <section class="delivery__section section">
       <div class="container">
         <form class="delivery__form" id="DeliveryForm">
           <div class="form__cities block-column">
             <label for="CitiesInput" class="cities__label">
               Recipient city:
             </label>
-            <input type="text" class="cities__input" id="CitiesInput" />
+            <div class="cities__input-wrapper">
+              <input type="text" class="cities__input input" id="CitiesInput" />
+              <button class="dropdown__button"></button>
+            </div>
           </div>
           <!-- /.form__cities -->
 
@@ -26,7 +29,12 @@
 
           <div class="form__name-wrapper block-column">
             <label for="NameInput" class="name__label">Name:</label>
-            <input type="text" class="name__input" id="NameInput" required />
+            <input
+              type="text"
+              class="name__input input"
+              id="NameInput"
+              required
+            />
           </div>
           <!-- /.form__name-wrapper -->
 
@@ -34,7 +42,7 @@
             <label for="SernameInput" class="sername__label">Sername:</label>
             <input
               type="text"
-              class="sername__input"
+              class="sername__input input"
               id="SernameInput"
               required
             />
@@ -45,7 +53,7 @@
             <label for="PhoneInput" class="phone__label">phone:</label>
             <input
               type="tel"
-              class="phone__input phone-mask"
+              class="phone__input phone-mask input"
               id="PhoneInput"
               required
             />
