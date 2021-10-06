@@ -1,18 +1,19 @@
-'use ctrict';
+'use strict';
 
 let url =
-  'http://geodb-free-service.wirefreethought.com/v1/geo/cities?offset=0&languageCode=ru&sort=name';
+  'http://geohelper.info/api/v1/countries?apiKey=JT4TwHR95h6PpzjwXhbfwBPmffpeKSFY&locale%5Blang%5D=uk&locale%5BfallbackLang%5D=ua';
 
-fetch('https://wft-geo-db.p.rapidapi.com/v1/geo/countries/UA/regions', {
-  method: 'GET',
-  headers: {
-    'x-rapidapi-host': 'wft-geo-db.p.rapidapi.com',
-    'x-rapidapi-key': '',
-  },
-})
-  .then(response => {
-    console.log(response.json());
-  })
+fetch(url)
+  .then(response => console.log(response.json()))
+  .then(json => console.log(json))
   .catch(err => {
     console.error(err);
   });
+
+// function mapArray(array) {
+//   return array.map(element => {
+//     return {
+//       name: element.name,
+//     };
+//   });
+// }
