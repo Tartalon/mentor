@@ -36,8 +36,14 @@ a {
   width: 250px;
 }
 
+.form__cities {
+  position: relative;
+}
+
 .cities__input-wrapper {
   position: relative;
+  max-width: -webkit-max-content;
+  max-width: -moz-max-content;
   max-width: max-content;
 }
 
@@ -56,6 +62,14 @@ a {
   border-bottom: 10px solid black;
   border-right: 10px solid transparent;
   transform: rotate(-45deg);
+}
+
+.cities__list-wrapper {
+  position: absolute;
+  left: 0;
+  top: 40px;
+  z-index: 2;
+  background-color: white;
 }
 
 .cities__list {

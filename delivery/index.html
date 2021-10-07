@@ -17,15 +17,14 @@
             </label>
             <div class="cities__input-wrapper">
               <input type="text" class="cities__input input" id="CitiesInput" />
-              <button class="dropdown__button"></button>
+              <button class="dropdown__button" type="button"></button>
             </div>
+            <div class="cities__list-wrapper hidden">
+              <ul class="cities__list"></ul>
+            </div>
+            <!-- /.cities__list-wrapper -->
           </div>
           <!-- /.form__cities -->
-
-          <div class="cities__list-wrapper">
-            <ul class="cities__list"></ul>
-          </div>
-          <!-- /.cities__list-wrapper -->
 
           <div class="form__name-wrapper block-column">
             <label for="NameInput" class="name__label">Name:</label>
@@ -50,11 +49,12 @@
           <!-- /.form__sername-wrapper -->
 
           <div class="form__phone-wrapper block-column">
-            <label for="PhoneInput" class="phone__label">phone:</label>
+            <label for="PhoneInput" class="phone__label">Phone:</label>
             <input
               type="tel"
               class="phone__input phone-mask input"
               id="PhoneInput"
+              maxlength="18"
               required
             />
           </div>
