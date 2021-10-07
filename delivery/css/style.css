@@ -4,6 +4,7 @@
 
 ul {
   padding: 0;
+  margin: 0;
 }
 
 li {
@@ -28,6 +29,7 @@ a {
 .block-column {
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
 }
 
 .input {
@@ -54,4 +56,26 @@ a {
   border-bottom: 10px solid black;
   border-right: 10px solid transparent;
   transform: rotate(-45deg);
+}
+
+.cities__list {
+  width: 250px;
+  height: 300px;
+  overflow: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: gray transparent;
+  border: 1px solid black;
+}
+
+.cities__item {
+  padding: 10px 5px;
+  line-height: 18px;
+}
+
+.cities__item:hover {
+  color: red;
+}
+
+.hidden {
+  display: none;
 }

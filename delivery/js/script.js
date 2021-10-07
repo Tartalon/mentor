@@ -1,6 +1,9 @@
 'use strict';
 
 const citiesList = document.querySelector('.cities__list');
+const citiesInput = document.querySelector('.cities__input');
+const dropdownButton = document.querySelector('.dropdown__button');
+const citiesListWrapper = document.querySelector('.cities__list-wrapper');
 
 let url =
   'http://geohelper.info/api/v1/countries?apiKey=JT4TwHR95h6PpzjwXhbfwBPmffpeKSFY&locale%5Blang%5D=uk&locale%5BfallbackLang%5D=ua';
@@ -11,6 +14,10 @@ fetch(url)
   .catch(err => {
     console.error(err);
   });
+
+dropdownButton.addEventListener('click', function () {
+  citiesListWrapper.classList.toggle('hidden');
+});
 
 function mapArray(array) {
   return array.map(element => {
