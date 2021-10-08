@@ -10,7 +10,13 @@ let url =
 
 fetch(url)
   .then(response => response.json())
-  .then(data => getCitiesList(mapArray(data.result)))
+  .then(data => {
+    getCitiesList(mapArray(data.result));
+    citiesInput.addEventListener(
+      'change',
+      arrayFilterByInput(mapArray(data.result))
+    );
+  })
   .catch(err => {
     console.error(err);
   });
@@ -35,4 +41,10 @@ function getCitiesList(arr) {
 
     citiesList.append(li);
   });
+}
+
+function arrayFilterByInput(array) {
+  let value = citiesInput.value;
+  let result = array.filter(city => value + city.slice(value.length));
+  return result;
 }
