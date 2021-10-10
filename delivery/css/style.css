@@ -56,7 +56,7 @@ a {
 
 .dropdown__button::after {
   position: absolute;
-  content: '';
+  content: "";
   top: 0;
   right: 7px;
   border-bottom: 10px solid black;
@@ -92,4 +92,8 @@ a {
 
 .hidden {
   display: none;
+}
+
+.comment__input {
+  max-width: 250px;
 }
