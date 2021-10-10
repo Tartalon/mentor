@@ -30,6 +30,7 @@ a {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+  max-width: 250px;
 }
 
 .input {
@@ -96,4 +97,14 @@ a {
 
 .comment__input {
   max-width: 250px;
+}
+
+/* ============ Cargo ============ */
+
+.cargo__wrapper {
+  display: flex;
+}
+
+.cargo__widht-box {
+  margin-right: 20px;
 }
