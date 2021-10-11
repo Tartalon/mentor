@@ -1,33 +1,41 @@
-"use strict";
+'use strict';
 
-const citiesList = document.querySelector(".cities__list");
-const citiesInput = document.querySelector(".cities__input");
-const dropdownButton = document.querySelector(".dropdown__button");
-const citiesListWrapper = document.querySelector(".cities__list-wrapper");
-const cargoWidthInp = document.querySelector("#CargoWidth");
-const cargoHightInp = document.querySelector("#CargoHight");
-const cargoHightRange = document.querySelector(".hight__range");
-const cargoWidthRange = document.querySelector(".width__range");
+const citiesList = document.querySelector('.cities__list');
+const citiesInput = document.querySelector('.cities__input');
+const dropdownButton = document.querySelector('.dropdown__button');
+const citiesListWrapper = document.querySelector('.cities__list-wrapper');
+const cargoWidthInp = document.querySelector('#CargoWidth');
+const cargoHightInp = document.querySelector('#CargoHight');
+const cargoHightRange = document.querySelector('.hight__range');
+const cargoWidthRange = document.querySelector('.width__range');
 
 let url =
-  "http://geohelper.info/api/v1/countries?apiKey=JT4TwHR95h6PpzjwXhbfwBPmffpeKSFY&locale%5Blang%5D=uk&locale%5BfallbackLang%5D=ua";
+  'http://geohelper.info/api/v1/countries?apiKey=JT4TwHR95h6PpzjwXhbfwBPmffpeKSFY&locale%5Blang%5D=uk&locale%5BfallbackLang%5D=ua';
 
 fetch(url)
-  .then((response) => response.json())
-  .then((data) => {
+  .then(response => response.json())
+  .then(data => {
     let citiesArray = mapArray(data.result);
     getCitiesList(citiesArray);
   })
-  .catch((err) => {
+  .catch(err => {
     console.error(err);
   });
 
-dropdownButton.addEventListener("click", function () {
-  citiesListWrapper.classList.toggle("hidden");
+dropdownButton.addEventListener('click', function () {
+  citiesListWrapper.classList.toggle('hidden');
+});
+
+cargoHightRange.addEventListener('change', function (e) {
+  cargoHightInp.value = cargoHightRange.value;
+});
+
+cargoWidthRange.addEventListener('change', function (e) {
+  cargoWidthInp.value = cargoWidthRange.value;
 });
 
 function mapArray(array) {
-  return array.map((element) => {
+  return array.map(element => {
     return {
       name: element.name,
     };
@@ -35,21 +43,17 @@ function mapArray(array) {
 }
 
 function getCitiesList(arr) {
-  arr.forEach((element) => {
-    let li = document.createElement("li");
-    li.classList.add("cities__item");
+  arr.forEach(element => {
+    let li = document.createElement('li');
+    li.classList.add('cities__item');
     li.textContent = element.name;
 
     citiesList.append(li);
   });
 }
 
-cargoHightRange.addEventListener("change", function (e) {
-  console.log(cargoHightRange);
-});
-
-var phoneMask = document.getElementById("PhoneInput");
+var phoneMask = document.getElementById('PhoneInput');
 var maskOptions = {
-  mask: "+{38}(000)000-00-00",
+  mask: '+{38}(000)000-00-00',
 };
 var mask = IMask(phoneMask, maskOptions);

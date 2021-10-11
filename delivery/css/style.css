@@ -57,7 +57,7 @@ a {
 
 .dropdown__button::after {
   position: absolute;
-  content: "";
+  content: '';
   top: 0;
   right: 7px;
   border-bottom: 10px solid black;
@@ -101,10 +101,18 @@ a {
 
 /* ============ Cargo ============ */
 
-.cargo__wrapper {
+.cargo__inputs {
   display: flex;
 }
 
 .cargo__widht-box {
   margin-right: 20px;
+}
+
+.cargo__drawing-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 400px;
+  height: 200px;
 }
