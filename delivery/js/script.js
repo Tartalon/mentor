@@ -8,6 +8,7 @@ const cargoWidthInp = document.querySelector('#CargoWidth');
 const cargoHightInp = document.querySelector('#CargoHight');
 const cargoHightRange = document.querySelector('.hight__range');
 const cargoWidthRange = document.querySelector('.width__range');
+const cargoDrawing = document.querySelector('.cargo__drawing');
 
 let url =
   'http://geohelper.info/api/v1/countries?apiKey=JT4TwHR95h6PpzjwXhbfwBPmffpeKSFY&locale%5Blang%5D=uk&locale%5BfallbackLang%5D=ua';
@@ -26,12 +27,30 @@ dropdownButton.addEventListener('click', function () {
   citiesListWrapper.classList.toggle('hidden');
 });
 
+const dimentsionsCargo = function () {
+  let height = +cargoHightInp.value * 100 + 20;
+  let width = +cargoWidthInp.value * 100 + 20;
+
+  cargoDrawing.style.minWidth = `${width}px`;
+  cargoDrawing.style.minHeight = height + 'px';
+};
+
 cargoHightRange.addEventListener('change', function (e) {
   cargoHightInp.value = cargoHightRange.value;
+  let height = +cargoHightInp.value * 100 + 20;
+  let width = +cargoWidthInp.value * 100 + 20;
+
+  cargoDrawing.style.minWidth = `${width}px`;
+  cargoDrawing.style.minHeight = height + 'px';
 });
 
 cargoWidthRange.addEventListener('change', function (e) {
   cargoWidthInp.value = cargoWidthRange.value;
+  let height = +cargoHightInp.value * 100 + 20;
+  let width = +cargoWidthInp.value * 100 + 20;
+
+  cargoDrawing.style.minWidth = `${width}px`;
+  cargoDrawing.style.minHeight = height + 'px';
 });
 
 function mapArray(array) {
