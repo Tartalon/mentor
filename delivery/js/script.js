@@ -4,6 +4,7 @@ const citiesList = document.querySelector('.cities__list');
 const citiesInput = document.querySelector('.cities__input');
 const dropdownButton = document.querySelector('.dropdown__button');
 const citiesListWrapper = document.querySelector('.cities__list-wrapper');
+const cargoInputs = document.querySelector('.cargo__inputs');
 const cargoWidthInp = document.querySelector('#CargoWidth');
 const cargoHightInp = document.querySelector('#CargoHight');
 const cargoHightRange = document.querySelector('.hight__range');
@@ -27,27 +28,18 @@ dropdownButton.addEventListener('click', function () {
   citiesListWrapper.classList.toggle('hidden');
 });
 
-const dimentsionsCargo = function () {
+cargoInputs.addEventListener('change', function (e) {
+  let target = e.target;
   let height = +cargoHightInp.value * 100 + 20;
   let width = +cargoWidthInp.value * 100 + 20;
 
-  cargoDrawing.style.minWidth = `${width}px`;
-  cargoDrawing.style.minHeight = height + 'px';
-};
-
-cargoHightRange.addEventListener('change', function (e) {
-  cargoHightInp.value = cargoHightRange.value;
-  let height = +cargoHightInp.value * 100 + 20;
-  let width = +cargoWidthInp.value * 100 + 20;
-
-  cargoDrawing.style.minWidth = `${width}px`;
-  cargoDrawing.style.minHeight = height + 'px';
-});
-
-cargoWidthRange.addEventListener('change', function (e) {
-  cargoWidthInp.value = cargoWidthRange.value;
-  let height = +cargoHightInp.value * 100 + 20;
-  let width = +cargoWidthInp.value * 100 + 20;
+  if (target == cargoWidthRange || target == cargoHightRange) {
+    cargoWidthInp.value = cargoWidthRange.value;
+    cargoHightInp.value = cargoHightRange.value;
+  } else if (target == cargoWidthInp || target == cargoHightInp) {
+    cargoWidthRange.value = cargoWidthInp.value;
+    cargoHightRange.value = cargoHightInp.value;
+  }
 
   cargoDrawing.style.minWidth = `${width}px`;
   cargoDrawing.style.minHeight = height + 'px';
