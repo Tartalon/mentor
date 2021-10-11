@@ -28,15 +28,15 @@ dropdownButton.addEventListener('click', function () {
   citiesListWrapper.classList.toggle('hidden');
 });
 
-cargoInputs.addEventListener('change', function (e) {
+cargoInputs.addEventListener('input', function (e) {
   let target = e.target;
   let height = +cargoHightInp.value * 100 + 20;
   let width = +cargoWidthInp.value * 100 + 20;
 
-  if (target == cargoWidthRange || target == cargoHightRange) {
+  if (target === cargoWidthRange || target === cargoHightRange) {
     cargoWidthInp.value = cargoWidthRange.value;
     cargoHightInp.value = cargoHightRange.value;
-  } else if (target == cargoWidthInp || target == cargoHightInp) {
+  } else if (target === cargoWidthInp || target === cargoHightInp) {
     cargoWidthRange.value = cargoWidthInp.value;
     cargoHightRange.value = cargoHightInp.value;
   }
