@@ -47,7 +47,7 @@ cargoInputs.addEventListener("input", function (e) {
   }
 
   cargoDrawing.style.minWidth = `${width}px`;
-  cargoDrawing.style.minHeight = height + "px";
+  cargoDrawing.style.minHeight = `${height}px`;
 
   cargoWeight.textContent =
     Math.round((inputHight * inputWidth) / 0.0017) + " Kg";
