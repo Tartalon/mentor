@@ -71,11 +71,11 @@ function getCitiesList(arr) {
   });
 }
 
-var phoneMask = document.getElementById('PhoneInput');
-var maskOptions = {
+const phoneMask = document.getElementById('PhoneInput');
+const maskOptions = {
   mask: '+{38}(000)000-00-00',
 };
-var mask = IMask(phoneMask, maskOptions);
+const mask = IMask(phoneMask, maskOptions);
 
 (function () {
   let date = new Date();
