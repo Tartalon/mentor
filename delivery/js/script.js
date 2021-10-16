@@ -12,22 +12,50 @@ const cargoWidthRange = document.querySelector(".width__range");
 const cargoDrawing = document.querySelector(".cargo__drawing");
 const cargoWeight = document.querySelector(".cargo__weight");
 
-let url =
-  "http://geohelper.info/api/v1/countries?apiKey=JT4TwHR95h6PpzjwXhbfwBPmffpeKSFY&locale%5Blang%5D=uk&locale%5BfallbackLang%5D=ua";
+const out = document.querySelector(".out");
 
-fetch(url)
-  .then((response) => response.json())
-  .then((data) => {
-    let citiesArray = data.result.map((element) => {
-      return {
-        name: element.name,
-      };
-    });
-    getCitiesList(citiesArray);
-  })
-  .catch((err) => {
-    console.error(err);
+const url =
+  "https://gist.githubusercontent.com/alex-oleshkevich/1509c308fabab9e104b5190dab99a77b/raw/b20bd8026deec00205a57d395c0ae1f75cc387bb/ua-cities.json";
+
+(async function getData() {
+  const response = await fetch(url);
+  const data = await response.json();
+  const regions = await data[0].regions;
+  const regionsCitiesArray = regions.map((element) => element.cities);
+  let citiesArr = [];
+  regionsCitiesArray.map((element) => {
+    for (let i = 0; i < element.length; i++) {
+      citiesArr.push(element[i].name);
+    }
   });
+  createLi(citiesArr);
+})();
+
+function createLi(arr) {
+  for (const city of arr) {
+    const li = document.createElement("li");
+    li.classList.add("cities__item");
+    li.textContent = city;
+    citiesList.append(li);
+  }
+}
+
+// const url =
+//   "http://geohelper.info/api/v1/countries?apiKey=JT4TwHR95h6PpzjwXhbfwBPmffpeKSFY&locale%5Blang%5D=uk&locale%5BfallbackLang%5D=ua";
+
+// fetch(url)
+//   .then((response) => response.json())
+//   .then((data) => {
+//     let citiesArray = data.result.map((element) => {
+//       return {
+//         name: element.name,
+//       };
+//     });
+//     getCitiesList(citiesArray);
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//   });
 
 dropdownButton.addEventListener("click", function () {
   citiesListWrapper.classList.toggle("hidden");
