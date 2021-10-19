@@ -11,6 +11,8 @@ const cargoHightRange = document.querySelector('.hight__range');
 const cargoWidthRange = document.querySelector('.width__range');
 const cargoDrawing = document.querySelector('.cargo__drawing');
 const cargoWeight = document.querySelector('.cargo__weight');
+const dateInput = document.querySelector('#dateInput');
+const timeInput = document.querySelector('#timeInput');
 
 const out = document.querySelector('.out');
 let citiesArr = [];
@@ -125,6 +127,18 @@ function filterCities(arr) {
   createLi(filteredCities);
   console.log(filteredCities);
 }
+
+function getDeliveryDate() {
+  const today = new Date();
+  dateInput.valueAsDate = today;
+  const afterThreeDays = new Date(today.setDate(today.getDate() + 3));
+  const deliweryDay = `${afterThreeDays.getFullYear()}-${
+    afterThreeDays.getMonth() + 1
+  }-${afterThreeDays.getDate()}`;
+  return deliweryDay;
+}
+
+dateInput.setAttribute('min', getDeliveryDate());
 
 const phoneMask = document.getElementById('PhoneInput');
 const maskOptions = {
