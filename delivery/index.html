@@ -16,7 +16,12 @@
               Recipient city:
             </label>
             <div class="cities__input-wrapper">
-              <input type="text" class="cities__input input" id="CitiesInput" />
+              <input
+                type="text"
+                class="cities__input input"
+                id="CitiesInput"
+                name="citiesInput"
+              />
               <button class="dropdown__button" type="button"></button>
             </div>
             <div class="cities__list-wrapper hidden">
@@ -32,6 +37,7 @@
               type="text"
               class="name__input input"
               id="NameInput"
+              name="inputText"
               required
             />
           </div>
@@ -43,6 +49,7 @@
               type="text"
               class="sername__input input"
               id="SernameInput"
+              name="sernameInput"
               required
             />
           </div>
@@ -55,6 +62,7 @@
               class="phone__input phone-mask input"
               id="PhoneInput"
               maxlength="18"
+              name="phoneInput"
               required
             />
           </div>
@@ -62,7 +70,11 @@
 
           <div class="form__comment block-column">
             <label class="comment__label">Comments:</label>
-            <textarea class="comment__input" maxlength="200"></textarea>
+            <textarea
+              class="comment__input"
+              maxlength="200"
+              name="inputComments"
+            ></textarea>
           </div>
           <!-- /.form__comment -->
 
@@ -78,14 +90,15 @@
                     type="number"
                     class="width__input"
                     id="CargoWidth"
+                    name="cargoWidth"
                     min="0.1"
-                    max="3"
+                    max="4"
                     step="0.1"
                   />
                   <input
                     type="range"
                     min="0.1"
-                    max="3"
+                    max="4"
                     step="0.1"
                     value="0.1"
                     class="width__range"
@@ -100,14 +113,15 @@
                     type="number"
                     class="hight__input"
                     id="CargoHight"
+                    name="cargoHight"
                     min="0.1"
-                    max="2"
+                    max="3"
                     step="0.1"
                   />
                   <input
                     type="range"
                     min="0.1"
-                    max="2"
+                    max="3"
                     step="0.1"
                     value="0.1"
                     class="hight__range"
@@ -132,13 +146,20 @@
             <label for="dateInput" class="date__label"
               >Select delivery date:</label
             >
-            <input type="date" id="dateInput" class="date__input" required />
+            <input
+              type="date"
+              id="dateInput"
+              class="date__input"
+              name="inputDate"
+              required
+            />
 
             <label for="timeInput" class="time__label">Input time:</label>
             <input
               type="time"
               class="time__input"
               id="timeInput"
+              name="InputTime"
               value="14:00"
               min="10:00"
               max="18:00"
@@ -146,6 +167,10 @@
             />
           </div>
           <!-- /.form__date -->
+
+          <div class="form__cost">
+            <span class="finalCost">Cost of delivery: </span>
+          </div>
         </form>
       </div>
       <!-- /.container -->
