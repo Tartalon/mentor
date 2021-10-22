@@ -14,6 +14,7 @@ const cargoWeight = document.querySelector('.cargo__weight');
 const dateInput = document.querySelector('#dateInput');
 const timeInput = document.querySelector('#timeInput');
 const finalCost = document.querySelector('.finalCost span');
+const confirmButton = document.querySelector('.confirm-button');
 
 const prices = {
   transportationPrice: 35,
@@ -22,6 +23,8 @@ const prices = {
   extraCostPerHeight: 400,
   extraCostPerWeight: 1300,
 };
+
+let answers = {};
 
 let citiesArr = [];
 
@@ -92,9 +95,10 @@ cargoInputs.addEventListener('input', function (e) {
     weight * prices.pricePerWeigh + prices.transportationPrice;
   totalPrice = getAdditionalPrice(inputWidth, inputHight, weight);
   finalCost.textContent = priceWithoutExtraCharge + totalPrice + ' UAH';
-
-  console.log(totalPrice);
 });
+
+confirmButton.addEventListener('click', writeDownTheAnswers);
+confirmButton.addEventListener('click', createModal);
 
 function createLi(arr) {
   let sortedArr = arr.sort();
@@ -137,7 +141,6 @@ function filterCities(arr) {
     city => city.slice(0, inputValue.length) == inputValue
   );
   createLi(filteredCities);
-  console.log(filteredCities);
 }
 
 function getDeliveryDate() {
@@ -162,12 +165,51 @@ function getAdditionalPrice(width, height, weight) {
   return additionalPrice;
 }
 
+function writeDownTheAnswers() {
+  const nameInput = document.querySelector('#NameInput');
+  const sernameInput = document.querySelector('#SernameInput');
+  const phoneInput = document.querySelector('#PhoneInput');
+  const commentsInput = document.querySelector('.comment__input');
+
+  answers.city = citiesInput.value;
+  answers.name = nameInput.value;
+  answers.sername = sernameInput.value;
+  answers.phone = phoneInput.value;
+  answers.comments = commentsInput.value;
+  answers.width = +cargoWidthInp.value;
+  answers.hight = +cargoHightInp.value;
+  answers.weight = parseInt(cargoWeight.textContent);
+  answers.price = parseInt(finalCost.textContent);
+
+  console.log(answers);
+}
+
+function createModal() {
+  const modal = document.querySelector('.modal__box');
+
+  modal.insertAdjacentHTML(
+    'afterbegin',
+    `
+    <p class="recipient__city">Recipient city: ${answers.city}</p>
+    <p class="recipient__name">Full name: ${answers.name} ${answers.sername}</p>
+    <p class="recipient__phone">Recipient phone number: ${answers.phone}</p>
+    <p class="comments">Comments: </p>
+    <div class="cargo__info-box">
+      <span class="cargo__width">Cargo width: </span>
+      <span class="cargo__height">Cargo height: </span>
+      <span class="cargo__weight">Cargo weight: </span>
+    </div>
+    <p class="delivery-date">Delivery date is: </p>
+    <button type="submit" class="modal__submit">Submit</button>
+    <button class="modal__cancel">Cancel</button>
+  `
+  );
+}
+
 const phoneMask = document.getElementById('PhoneInput');
 const maskOptions = {
   mask: '+{38}(000)000-00-00',
 };
 const mask = IMask(phoneMask, maskOptions);
-
-console.log(finalCost);
 
 // Каждый дополнительный метр ширины груза: +1000 рублей к стоимости доставки - Каждый дополнительный метр высоты груза: +1200 рублей к стоимости доставки - Если вес больше половинного значения максимально допустимого (например, вы указали максимальный вес 500кг, а пользователь ввел >250): +3500 к стоимости доставки
