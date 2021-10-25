@@ -10,173 +10,178 @@
   <body>
     <section class="delivery__section section">
       <div class="container">
-        <form class="delivery__form" id="DeliveryForm">
-          <div class="form__cities block-column">
-            <label for="CitiesInput" class="cities__label">
-              Recipient city:
-            </label>
-            <div class="cities__input-wrapper">
+        <div class="form__wrapper">
+          <form class="delivery__form" id="DeliveryForm">
+            <div class="form__cities block-column">
+              <label for="CitiesInput" class="cities__label">
+                Recipient city:
+              </label>
+              <div class="cities__input-wrapper">
+                <input
+                  type="text"
+                  class="cities__input input"
+                  id="CitiesInput"
+                  name="citiesInput"
+                  required
+                />
+                <button class="dropdown__button" type="button"></button>
+              </div>
+              <div class="cities__list-wrapper hidden">
+                <ul class="cities__list"></ul>
+              </div>
+              <!-- /.cities__list-wrapper -->
+            </div>
+            <!-- /.form__cities -->
+
+            <div class="form__name-wrapper block-column">
+              <label for="NameInput" class="name__label">Name:</label>
               <input
                 type="text"
-                class="cities__input input"
-                id="CitiesInput"
-                name="citiesInput"
+                class="name__input input"
+                id="NameInput"
+                name="inputText"
+                required
               />
-              <button class="dropdown__button" type="button"></button>
             </div>
-            <div class="cities__list-wrapper hidden">
-              <ul class="cities__list"></ul>
+            <!-- /.form__name-wrapper -->
+
+            <div class="form__sername-wrapper block-column">
+              <label for="SernameInput" class="sername__label">Sername:</label>
+              <input
+                type="text"
+                class="sername__input input"
+                id="SernameInput"
+                name="sernameInput"
+                required
+              />
             </div>
-            <!-- /.cities__list-wrapper -->
-          </div>
-          <!-- /.form__cities -->
+            <!-- /.form__sername-wrapper -->
 
-          <div class="form__name-wrapper block-column">
-            <label for="NameInput" class="name__label">Name:</label>
-            <input
-              type="text"
-              class="name__input input"
-              id="NameInput"
-              name="inputText"
-              required
-            />
-          </div>
-          <!-- /.form__name-wrapper -->
+            <div class="form__phone-wrapper block-column">
+              <label for="PhoneInput" class="phone__label">Phone:</label>
+              <input
+                type="tel"
+                class="phone__input phone-mask input"
+                id="PhoneInput"
+                maxlength="18"
+                name="phoneInput"
+                required
+              />
+            </div>
+            <!-- /.form__phone-wrapper -->
 
-          <div class="form__sername-wrapper block-column">
-            <label for="SernameInput" class="sername__label">Sername:</label>
-            <input
-              type="text"
-              class="sername__input input"
-              id="SernameInput"
-              name="sernameInput"
-              required
-            />
-          </div>
-          <!-- /.form__sername-wrapper -->
+            <div class="form__comment block-column">
+              <label class="comment__label">Comments:</label>
+              <textarea
+                class="comment__input"
+                maxlength="200"
+                name="inputComments"
+              ></textarea>
+            </div>
+            <!-- /.form__comment -->
 
-          <div class="form__phone-wrapper block-column">
-            <label for="PhoneInput" class="phone__label">Phone:</label>
-            <input
-              type="tel"
-              class="phone__input phone-mask input"
-              id="PhoneInput"
-              maxlength="18"
-              name="phoneInput"
-              required
-            />
-          </div>
-          <!-- /.form__phone-wrapper -->
-
-          <div class="form__comment block-column">
-            <label class="comment__label">Comments:</label>
-            <textarea
-              class="comment__input"
-              maxlength="200"
-              name="inputComments"
-            ></textarea>
-          </div>
-          <!-- /.form__comment -->
-
-          <h2 class="cargo-dimennsions__title">Cargo Dimensions</h2>
-          <div class="form__cargo-dimensions">
-            <div class="cargo__wrapper">
-              <div class="cargo__inputs">
-                <div class="cargo__widht-box block-column">
-                  <label for="CargoWidth" class="width__label"
-                    >Cargo Width (in meters):</label
-                  >
-                  <input
-                    type="number"
-                    class="width__input"
-                    id="CargoWidth"
-                    name="cargoWidth"
-                    min="0.1"
-                    max="4"
-                    step="0.1"
-                  />
-                  <input
-                    type="range"
-                    min="0.1"
-                    max="4"
-                    step="0.1"
-                    value="0.1"
-                    class="width__range"
-                  />
+            <h2 class="cargo-dimennsions__title">Cargo Dimensions</h2>
+            <div class="form__cargo-dimensions">
+              <div class="cargo__wrapper">
+                <div class="cargo__inputs">
+                  <div class="cargo__widht-box block-column">
+                    <label for="CargoWidth" class="width__label"
+                      >Cargo Width (in meters):</label
+                    >
+                    <input
+                      type="number"
+                      class="width__input"
+                      id="CargoWidth"
+                      name="cargoWidth"
+                      min="0.1"
+                      max="4"
+                      step="0.1"
+                      required
+                    />
+                    <input
+                      type="range"
+                      min="0.1"
+                      max="4"
+                      step="0.1"
+                      value="0.1"
+                      class="width__range"
+                    />
+                  </div>
+                  <!-- /.cargo__widht-box -->
+                  <div class="cargo__hight-box block-column">
+                    <label for="CargoHight" class="cargo__hight"
+                      >Cargo Hight (in meters):</label
+                    >
+                    <input
+                      type="number"
+                      class="hight__input"
+                      id="CargoHight"
+                      name="cargoHight"
+                      min="0.1"
+                      max="3"
+                      step="0.1"
+                      required
+                    />
+                    <input
+                      type="range"
+                      min="0.1"
+                      max="3"
+                      step="0.1"
+                      value="0.1"
+                      class="hight__range"
+                    />
+                  </div>
+                  <!-- /.cargo__hight-box -->
                 </div>
-                <!-- /.cargo__widht-box -->
-                <div class="cargo__hight-box block-column">
-                  <label for="CargoHight" class="cargo__hight"
-                    >Cargo Hight (in meters):</label
-                  >
-                  <input
-                    type="number"
-                    class="hight__input"
-                    id="CargoHight"
-                    name="cargoHight"
-                    min="0.1"
-                    max="3"
-                    step="0.1"
-                  />
-                  <input
-                    type="range"
-                    min="0.1"
-                    max="3"
-                    step="0.1"
-                    value="0.1"
-                    class="hight__range"
-                  />
+                <div class="cargo__drawing-box">
+                  <div class="cargo__drawing">
+                    <span class="cargo__weight">0</span>
+                  </div>
+                  <!-- /.cargo__drawing -->
                 </div>
-                <!-- /.cargo__hight-box -->
+                <!-- /.cargo__drawing-box -->
               </div>
-              <div class="cargo__drawing-box">
-                <div class="cargo__drawing">
-                  <span class="cargo__weight">0</span>
-                </div>
-                <!-- /.cargo__drawing -->
-              </div>
-              <!-- /.cargo__drawing-box -->
+              <!-- /.cargo__wrapper -->
             </div>
-            <!-- /.cargo__wrapper -->
+            <!-- /.form__cargo-dimensions -->
+
+            <div class="form__date-wrapepr block-column">
+              <h2 class="date__title">Delivery date</h2>
+              <label for="dateInput" class="date__label"
+                >Select delivery date:</label
+              >
+              <input
+                type="date"
+                id="dateInput"
+                class="date__input"
+                name="inputDate"
+                required
+              />
+
+              <label for="timeInput" class="time__label">Input time:</label>
+              <input
+                type="time"
+                class="time__input"
+                id="timeInput"
+                name="InputTime"
+                value="14:00"
+                min="10:00"
+                max="18:00"
+                required
+              />
+            </div>
+            <!-- /.form__date -->
+
+            <p class="form__cost">
+              <p class="finalCost">Cost of delivery: <span></span></p>
+            </p>
+
+            <input type="submit" class="confirm-button" value="Checkout">
+            <button type="reset" class="reset-button">Clear</button>
+          </form>
+
+          <div class="modal__box hidden">
           </div>
-          <!-- /.form__cargo-dimensions -->
-
-          <div class="form__date-wrapepr block-column">
-            <h2 class="date__title">Delivery date</h2>
-            <label for="dateInput" class="date__label"
-              >Select delivery date:</label
-            >
-            <input
-              type="date"
-              id="dateInput"
-              class="date__input"
-              name="inputDate"
-              required
-            />
-
-            <label for="timeInput" class="time__label">Input time:</label>
-            <input
-              type="time"
-              class="time__input"
-              id="timeInput"
-              name="InputTime"
-              value="14:00"
-              min="10:00"
-              max="18:00"
-              required
-            />
-          </div>
-          <!-- /.form__date -->
-
-          <p class="form__cost">
-            <p class="finalCost">Cost of delivery: <span></span></p>
-          </p>
-
-          <button type="button" class="confirm-button">Confirm</button>
-          <button type="reset" class="reset-button">Clear</button>
-        </form>
-
-        <div class="modal__box">
         </div>
       </div>
       <!-- /.container -->

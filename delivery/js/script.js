@@ -4,6 +4,7 @@ const citiesList = document.querySelector('.cities__list');
 const citiesInput = document.querySelector('.cities__input');
 const dropdownButton = document.querySelector('.dropdown__button');
 const citiesListWrapper = document.querySelector('.cities__list-wrapper');
+const PhoneInput = document.querySelector('#PhoneInput');
 const cargoInputs = document.querySelector('.cargo__inputs');
 const cargoWidthInp = document.querySelector('#CargoWidth');
 const cargoHightInp = document.querySelector('#CargoHight');
@@ -179,13 +180,14 @@ function writeDownTheAnswers() {
   answers.width = +cargoWidthInp.value;
   answers.hight = +cargoHightInp.value;
   answers.weight = parseInt(cargoWeight.textContent);
+  answers.date = dateInput.value;
+  answers.time = timeInput.value;
   answers.price = parseInt(finalCost.textContent);
-
-  console.log(answers);
 }
 
 function createModal() {
   const modal = document.querySelector('.modal__box');
+  modal.classList.toggle('hidden');
 
   modal.insertAdjacentHTML(
     'afterbegin',
@@ -193,20 +195,22 @@ function createModal() {
     <p class="recipient__city">Recipient city: ${answers.city}</p>
     <p class="recipient__name">Full name: ${answers.name} ${answers.sername}</p>
     <p class="recipient__phone">Recipient phone number: ${answers.phone}</p>
-    <p class="comments">Comments: </p>
+    <p class="comments">Comments: ${answers.comments}</p>
     <div class="cargo__info-box">
-      <span class="cargo__width">Cargo width: </span>
-      <span class="cargo__height">Cargo height: </span>
-      <span class="cargo__weight">Cargo weight: </span>
+      <span class="cargo__width">Cargo width: ${answers.width} meters</span>
+      <span class="cargo__height">Cargo height: ${answers.height} meters</span>
+      <span class="cargo__weight">Cargo weight: ${answers.weight} kg</span>
     </div>
-    <p class="delivery-date">Delivery date is: </p>
-    <button type="submit" class="modal__submit">Submit</button>
+    <p class="delivery-date">Delivery date is: ${answers.date}. Time: ${answers.time}</p>
+    <button type="button" class="modal__submit">Submit</button>
     <button class="modal__cancel">Cancel</button>
   `
   );
+
+  console.log(timeInput.value);
 }
 
-const phoneMask = document.getElementById('PhoneInput');
+const phoneMask = PhoneInput;
 const maskOptions = {
   mask: '+{38}(000)000-00-00',
 };

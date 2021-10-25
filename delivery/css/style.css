@@ -18,12 +18,18 @@ a {
   color: inherit;
 }
 
+.section {
+  padding: 50px 20px;
+}
+
 .container {
   padding: 0 15px;
 }
 
-.section {
-  padding: 50px 20px;
+.form__wrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 .block-column {
@@ -114,8 +120,12 @@ a {
   justify-content: center;
   align-items: center;
   min-width: 200px;
+  max-width: -webkit-max-content;
+  max-width: -moz-max-content;
   max-width: max-content;
   min-height: 200px;
+  height: -webkit-max-content;
+  height: -moz-max-content;
   height: max-content;
 }
 
@@ -126,4 +136,25 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.modal__box {
+  position: absolute;
+  width: 100%;
+  max-width: 85%;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  padding: 15px 15px 15px 30px;
+  background-color: #fff;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+  border-radius: 15px;
+  box-shadow: 0px 0px 15px black;
+}
+
+.cargo__info-box {
+  display: flex;
+  flex-direction: column;
 }
