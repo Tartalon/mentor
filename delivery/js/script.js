@@ -166,7 +166,8 @@ function getAdditionalPrice(width, height, weight) {
   return additionalPrice;
 }
 
-function writeDownTheAnswers() {
+function writeDownTheAnswers(e) {
+  e.preventDeault();
   const nameInput = document.querySelector('#NameInput');
   const sernameInput = document.querySelector('#SernameInput');
   const phoneInput = document.querySelector('#PhoneInput');
@@ -209,6 +210,8 @@ function createModal() {
 
   console.log(timeInput.value);
 }
+
+function checkValid() {}
 
 const phoneMask = PhoneInput;
 const maskOptions = {
