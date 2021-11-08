@@ -101,6 +101,7 @@ confirmButton.addEventListener("click", writeDownTheAnswers);
 confirmButton.addEventListener("click", createModal);
 confirmButton.addEventListener("click", citiesInputValidation);
 confirmButton.addEventListener("click", nameInputValidation);
+confirmButton.addEventListener("click", sernameInputValidation);
 
 function createLi(arr) {
   let sortedArr = arr.sort();
@@ -208,13 +209,11 @@ function createModal() {
 
 function citiesInputValidation() {
   const err = document.querySelector(".cities__error");
-  const citiesList = Array.from(citiesList.children).map(
-    (el) => el.textContent
-  );
+  const cities = Array.from(citiesList.children).map((el) => el.textContent);
 
   if (!citiesInput.value) {
-    showInputErr(citiesList, err);
-  } else if (!citiesList.includes(citiesInput.value)) {
+    showInputErr(citiesInput, err);
+  } else if (!cities.includes(citiesInput.value)) {
     showInputErr(citiesInput, err);
     err.textContent = "This city is not on the list";
   } else {
@@ -230,6 +229,16 @@ function nameInputValidation() {
     showInputErr(nameInput, err);
   } else {
     undoError(nameInput, err);
+  }
+}
+
+function sernameInputValidation() {
+  const sernameInput = document.querySelector("#SernameInput");
+  const err = document.querySelector(".sername__error");
+  if (!sernameInput.value) {
+    showInputErr(sernameInput, err);
+  } else {
+    undoError(sernameInput, err);
   }
 }
 
