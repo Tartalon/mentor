@@ -108,6 +108,10 @@ a {
   display: none;
 }
 
+.phone__error {
+  display: none;
+}
+
 .hidden {
   display: none;
 }
