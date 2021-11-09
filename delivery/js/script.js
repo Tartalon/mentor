@@ -57,6 +57,7 @@ dateInput.setAttribute('min', getDeliveryDate());
 
 citiesInput.addEventListener('input', function (e) {
   citiesListWrapper.classList.remove('hidden');
+
   let filteredCities = citiesArr.filter(
     city => city.toLowerCase().indexOf(e.target.value.toLowerCase()) > -1
   );
@@ -67,32 +68,35 @@ citiesList.addEventListener('click', choossesCity);
 
 cargoInputs.addEventListener('input', function (e) {
   const target = e.target;
-  const inputWidth = cargoWidthInp.value;
-  const rangeWidth = cargoWidthRange.value;
-  const inputHight = cargoHightInp.value;
-  const rangeHight = cargoHightRange.value;
-  const height = inputHight * 100 + 20;
-  const width = inputWidth * 100 + 20;
-  const weight = Math.round((rangeHight * rangeWidth) / 0.02);
+
   let priceWithoutExtraCharge = 0;
   let totalPrice = 0;
 
-  cargoWeight.textContent = weight + ' Kg';
-
   if (target === cargoWidthRange || target === cargoHightRange) {
-    cargoWidthInp.value = rangeWidth;
-    cargoHightInp.value = rangeHight;
+    cargoWidthInp.value = cargoWidthRange.value;
+    cargoHightInp.value = cargoHightRange.value;
   } else if (target === cargoWidthInp || target === cargoHightInp) {
-    cargoWidthRange.value = inputWidth;
-    cargoHightRange.value = inputHight;
+    cargoWidthRange.value = cargoWidthInp.value;
+    cargoHightRange.value = cargoHightInp.value;
   }
 
+  const weight = Math.round(
+    (cargoHightRange.value * cargoWidthRange.value) / 0.02
+  );
+  cargoWeight.textContent = weight + ' Kg';
+
+  const height = cargoHightInp.value * 100 + 20;
+  const width = cargoWidthInp.value * 100 + 20;
   cargoDrawing.style.minWidth = `${width}px`;
   cargoDrawing.style.minHeight = `${height}px`;
 
   priceWithoutExtraCharge =
     weight * prices.pricePerWeigh + prices.transportationPrice;
-  totalPrice = getAdditionalPrice(inputWidth, inputHight, weight);
+  totalPrice = getAdditionalPrice(
+    cargoWidthInp.value,
+    cargoHightInp.value,
+    weight
+  );
   finalCost.textContent = priceWithoutExtraCharge + totalPrice + ' UAH';
 });
 
@@ -100,6 +104,7 @@ confirmButton.addEventListener('click', writeDownTheAnswers);
 confirmButton.addEventListener('click', createModal);
 confirmButton.addEventListener('click', citiesInputValidation);
 confirmButton.addEventListener('click', nameInputValidation);
+confirmButton.addEventListener('click', sernameInputValidation);
 
 function createLi(arr) {
   let sortedArr = arr.sort();
@@ -207,20 +212,15 @@ function createModal() {
 
 function citiesInputValidation() {
   const err = document.querySelector('.cities__error');
-  const citiesList = Array.from(citiesList.children).map(el => el.textContent);
+  const cities = Array.from(citiesList.children).map(el => el.textContent);
 
   if (!citiesInput.value) {
-    citiesInput.style.outline = '2px solid red';
-    citiesInput.focus();
-    err.style.display = 'inline-block';
-  } else if (!сitiesList.includes(citiesInput.value)) {
-    citiesInput.style.outline = '2px solid red';
-    citiesInput.focus();
-    err.style.display = 'inline-block';
+    showInputErr(citiesInput, err);
+  } else if (!cities.includes(citiesInput.value)) {
+    showInputErr(citiesInput, err);
     err.textContent = 'This city is not on the list';
   } else {
-    citiesInput.style.outline = '';
-    err.style.display = '';
+    undoError(nameInput, err);
     err.textContent = '';
   }
 }
@@ -229,13 +229,31 @@ function nameInputValidation() {
   const nameInput = document.querySelector('#NameInput');
   const err = document.querySelector('.name__error');
   if (!nameInput.value) {
-    nameInput.style.outline = '2px solid red';
-    err.style.display = 'inline-block';
-    nameInput.focus();
+    showInputErr(nameInput, err);
   } else {
-    nameInput.style.outline = '';
-    err.style.display = '';
+    undoError(nameInput, err);
   }
+}
+
+function sernameInputValidation() {
+  const sernameInput = document.querySelector('#SernameInput');
+  const err = document.querySelector('.sername__error');
+  if (!sernameInput.value) {
+    showInputErr(sernameInput, err);
+  } else {
+    undoError(sernameInput, err);
+  }
+}
+
+function showInputErr(input, err) {
+  input.style.outline = '2px solid red';
+  err.style.display = 'inline-block';
+  input.focus();
+}
+
+function undoError(input, err) {
+  input.style.outline = '';
+  err.style.display = '';
 }
 
 const phoneMask = document.getElementById('PhoneInput');
