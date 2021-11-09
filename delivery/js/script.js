@@ -57,7 +57,6 @@ dateInput.setAttribute('min', getDeliveryDate());
 
 citiesInput.addEventListener('input', function (e) {
   citiesListWrapper.classList.remove('hidden');
-  const inputValue = citiesInput.value;
   let filteredCities = citiesArr.filter(
     city => city.toLowerCase().indexOf(e.target.value.toLowerCase()) > -1
   );
@@ -208,13 +207,13 @@ function createModal() {
 
 function citiesInputValidation() {
   const err = document.querySelector('.cities__error');
-  const sitiesList = Array.from(citiesList.children).map(el => el.textContent);
+  const citiesList = Array.from(citiesList.children).map(el => el.textContent);
 
   if (!citiesInput.value) {
     citiesInput.style.outline = '2px solid red';
     citiesInput.focus();
     err.style.display = 'inline-block';
-  } else if (!sitiesList.includes(citiesInput.value)) {
+  } else if (!сitiesList.includes(citiesInput.value)) {
     citiesInput.style.outline = '2px solid red';
     citiesInput.focus();
     err.style.display = 'inline-block';
