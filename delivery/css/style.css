@@ -62,7 +62,7 @@ a {
 
 .dropdown__button::after {
   position: absolute;
-  content: '';
+  content: "";
   top: 0;
   right: 7px;
   border-bottom: 10px solid black;
@@ -147,4 +147,8 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.time__error {
+  display: none;
 }
