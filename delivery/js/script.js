@@ -15,6 +15,7 @@ const dateInput = document.querySelector('#dateInput');
 const timeInput = document.querySelector('#timeInput');
 const finalCost = document.querySelector('.finalCost span');
 const confirmButton = document.querySelector('.confirm-button');
+const phoneMask = document.getElementById('PhoneInput');
 
 const prices = {
   transportationPrice: 35,
@@ -104,7 +105,9 @@ confirmButton.addEventListener('click', writeDownTheAnswers);
 confirmButton.addEventListener('click', createModal);
 confirmButton.addEventListener('click', citiesInputValidation);
 confirmButton.addEventListener('click', nameInputValidation);
-confirmButton.addEventListener('click', sernameInputValidation);
+confirmButton.addEventListener('click', surnameInputValidation);
+confirmButton.addEventListener('click', phoneInputValidation);
+confirmButton.addEventListener('click', dateInputValidation);
 
 function createLi(arr) {
   let sortedArr = arr.sort();
@@ -151,7 +154,9 @@ function filterCities(arr) {
 
 function getDeliveryDate() {
   const today = new Date();
-  dateInput.valueAsDate = today;
+  if (!dateInput.value) {
+    dateInput.valueAsDate = today;
+  }
   const afterThreeDays = new Date(today.setDate(today.getDate() + 3));
   const deliweryDay = `${afterThreeDays.getFullYear()}-${
     afterThreeDays.getMonth() + 1
@@ -173,13 +178,13 @@ function getAdditionalPrice(width, height, weight) {
 
 function writeDownTheAnswers() {
   const nameInput = document.querySelector('#NameInput');
-  const sernameInput = document.querySelector('#SernameInput');
+  const surnameInput = document.querySelector('#SurnameInput');
   const phoneInput = document.querySelector('#PhoneInput');
   const commentsInput = document.querySelector('.comment__input');
 
   answers.city = citiesInput.value;
   answers.name = nameInput.value;
-  answers.sername = sernameInput.value;
+  answers.surname = surnameInput.value;
   answers.phone = phoneInput.value;
   answers.comments = commentsInput.value;
   answers.width = +cargoWidthInp.value;
@@ -190,6 +195,7 @@ function writeDownTheAnswers() {
 
 function createModal() {
   const modal = document.querySelector('.modal__box');
+  modal.innerHTML = '';
 
   modal.insertAdjacentHTML(
     'afterbegin',
@@ -220,7 +226,7 @@ function citiesInputValidation() {
     showInputErr(citiesInput, err);
     err.textContent = 'This city is not on the list';
   } else {
-    undoError(nameInput, err);
+    undoError(citiesInput, err);
     err.textContent = '';
   }
 }
@@ -235,13 +241,34 @@ function nameInputValidation() {
   }
 }
 
-function sernameInputValidation() {
-  const sernameInput = document.querySelector('#SernameInput');
-  const err = document.querySelector('.sername__error');
-  if (!sernameInput.value) {
-    showInputErr(sernameInput, err);
+function surnameInputValidation() {
+  const surnameInput = document.querySelector('#SurnameInput');
+  const err = document.querySelector('.surname__error');
+  if (!surnameInput.value) {
+    showInputErr(surnameInput, err);
   } else {
-    undoError(sernameInput, err);
+    undoError(surnameInput, err);
+  }
+}
+
+function phoneInputValidation() {
+  const err = document.querySelector('.phone__error');
+  if (phoneMask.value.length !== 17) {
+    showInputErr(phoneMask, err);
+  } else {
+    undoError(phoneMask, err);
+  }
+}
+
+function dateInputValidation() {
+  const err = document.querySelector('.date__error');
+  console.log(+getDeliveryDate().split('-')[2], +dateInput.value.split('-')[2]);
+
+  if (+getDeliveryDate().split('-')[2] > +dateInput.value.split('-')[2]) {
+    showInputErr(dateInput, err);
+    err.textContent = dateInput.validationMessage;
+  } else {
+    undoError(dateInput, err);
   }
 }
 
@@ -256,7 +283,6 @@ function undoError(input, err) {
   err.style.display = '';
 }
 
-const phoneMask = document.getElementById('PhoneInput');
 const maskOptions = {
   mask: '+{38}(000)000-00-00',
 };
