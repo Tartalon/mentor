@@ -78,6 +78,7 @@
               class="comment__input"
               maxlength="200"
               name="inputComments"
+              placeholder="No comments"
             ></textarea>
           </div>
           <!-- /.form__comment -->
@@ -137,7 +138,7 @@
               </div>
               <div class="cargo__drawing-box">
                 <div class="cargo__drawing">
-                  <span class="cargo__weight">0</span>
+                  <span class="cargo__weight">1kg</span>
                 </div>
                 <!-- /.cargo__drawing -->
               </div>
@@ -177,18 +178,20 @@
           <!-- /.form__date -->
 
           <p class="form__cost">
-            <p class="finalCost">Cost of delivery: <span></span></p>
+            <p class="finalCost">Cost of delivery: <span>37UAH</span></p>
           </p>
 
           <button type="button" class="confirm-button">Confirm</button>
           <button type="reset" class="reset-button">Clear</button>
         </form>
-
-        <div class="modal__box">
-        </div>
       </div>
       <!-- /.container -->
     </section>
+
+    <div class="modal">
+      <div class="modal__box">
+      </div>
+    </div>
 
     <script src="https://unpkg.com/imask"></script>
     <script src="./js/script.js"></script>
