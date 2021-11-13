@@ -5,11 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Delivery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Roboto:ital@1&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
     <section class="delivery__section section">
       <div class="container">
+        <h1 class="title">Shipping cost calculator</h1>
         <form class="delivery__form" id="DeliveryForm">
           <div class="form__cities block-column">
             <label for="CitiesInput" class="cities__label">
@@ -79,7 +86,7 @@
           <div class="form__comment block-column">
             <label class="comment__label">Comments:</label>
             <textarea
-              class="comment__input"
+              class="comment__input input"
               maxlength="200"
               name="inputComments"
               placeholder="No comments"
@@ -97,7 +104,7 @@
                   >
                   <input
                     type="number"
-                    class="width__input"
+                    class="width__input cargo__input input"
                     id="CargoWidth"
                     name="cargoWidth"
                     min="0.1"
@@ -111,19 +118,19 @@
                     max="4"
                     step="0.1"
                     value="0.1"
-                    class="width__range"
+                    class="width__range cargo__range"
                   />
                 </div>
                 <!-- /.cargo__widht-box -->
-                <div class="cargo__hight-box block-column">
-                  <label for="CargoHight" class="cargo__hight"
-                    >Cargo Hight (in meters):</label
+                <div class="cargo__height-box block-column">
+                  <label for="CargoHeight" class="cargo__height"
+                    >Cargo Height (in meters):</label
                   >
                   <input
                     type="number"
-                    class="hight__input"
-                    id="CargoHight"
-                    name="cargoHight"
+                    class="height__input cargo__input input"
+                    id="CargoHeight"
+                    name="cargoHeight"
                     min="0.1"
                     max="3"
                     value="0.1"
@@ -135,10 +142,10 @@
                     max="3"
                     step="0.1"
                     value="0.1"
-                    class="hight__range"
+                    class="height__range cargo__range"
                   />
                 </div>
-                <!-- /.cargo__hight-box -->
+                <!-- /.cargo__height-box -->
               </div>
               <div class="cargo__drawing-box">
                 <div class="cargo__drawing">
@@ -154,41 +161,47 @@
 
           <div class="form__date-wrapepr block-column">
             <h2 class="date__title">Delivery date</h2>
-            <label for="dateInput" class="date__label"
-              >Select delivery date:</label
-            >
-            <input
-              type="date"
-              id="dateInput"
-              class="date__input"
-              name="inputDate"
-              required
-            />
-            <span class="date__error input__error"></span>
+            <div class="form__date-box">
+              <label for="dateInput" class="date__label"
+                >Select delivery date:</label
+              >
+              <input
+                type="date"
+                id="dateInput"
+                class="date__input input"
+                name="inputDate"
+                required
+              />
+              <span class="date__error input__error"></span>
+            </div>
 
-            <label for="timeInput" class="time__label">Input time:</label>
-            <input
-              type="time"
-              class="time__input"
-              id="timeInput"
-              name="InputTime"
-              value="14:00"
-              min="10:00"
-              max="18:00"
-              required
-            />
-            <span class="time__error input__error"
-              >Delivery time 9:00 - 18:00</span
-            >
+            <div class="form__time-box">
+              <label for="timeInput" class="time__label">Input time:</label>
+              <input
+                type="time"
+                class="time__input input"
+                id="timeInput"
+                name="InputTime"
+                value="14:00"
+                min="10:00"
+                max="18:00"
+                required
+              />
+              <span class="time__error input__error"
+                >Delivery time 9:00 - 18:00</span
+              >
+            </div>
           </div>
           <!-- /.form__date -->
 
           <div class="form__cost">
-            <p class="finalCost">Cost of delivery: <span>37UAH</span></p>
+            <p class="finalCost">Cost of delivery: <span>37 UAH</span></p>
           </div>
 
-          <button type="button" class="confirm-button">Confirm</button>
-          <button type="reset" class="reset-button">Clear</button>
+          <div class="form__buttons">
+            <button type="button" class="confirm-button button">Confirm</button>
+            <button type="reset" class="reset-button button">Clear</button>
+          </div>
         </form>
       </div>
       <!-- /.container -->

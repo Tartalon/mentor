@@ -1,5 +1,6 @@
 "use strict";
 
+const body = document.querySelector("body");
 const form = document.querySelector("form");
 const citiesList = document.querySelector(".cities__list");
 const citiesInput = document.querySelector(".cities__input");
@@ -7,8 +8,8 @@ const dropdownButton = document.querySelector(".dropdown__button");
 const citiesListWrapper = document.querySelector(".cities__list-wrapper");
 const cargoInputs = document.querySelector(".cargo__inputs");
 const cargoWidthInp = document.querySelector("#CargoWidth");
-const cargoHightInp = document.querySelector("#CargoHight");
-const cargoHightRange = document.querySelector(".hight__range");
+const cargoHeightInp = document.querySelector("#CargoHeight");
+const cargoHeightRange = document.querySelector(".height__range");
 const cargoWidthRange = document.querySelector(".width__range");
 const cargoDrawing = document.querySelector(".cargo__drawing");
 const cargoWeight = document.querySelector(".cargo__weight");
@@ -82,20 +83,20 @@ cargoInputs.addEventListener("input", function (e) {
   let priceWithoutExtraCharge = 0;
   let totalPrice = 0;
 
-  if (target === cargoWidthRange || target === cargoHightRange) {
+  if (target === cargoWidthRange || target === cargoHeightRange) {
     cargoWidthInp.value = cargoWidthRange.value;
-    cargoHightInp.value = cargoHightRange.value;
-  } else if (target === cargoWidthInp || target === cargoHightInp) {
+    cargoHeightInp.value = cargoHeightRange.value;
+  } else if (target === cargoWidthInp || target === cargoHeightInp) {
     cargoWidthRange.value = cargoWidthInp.value;
-    cargoHightRange.value = cargoHightInp.value;
+    cargoHeightRange.value = cargoHeightInp.value;
   }
 
   const weight = Math.round(
-    (cargoHightRange.value * cargoWidthRange.value) / 0.02
+    (cargoHeightRange.value * cargoWidthRange.value) / 0.02
   );
   cargoWeight.textContent = weight + " kg";
 
-  const height = cargoHightInp.value * 100 + 20;
+  const height = cargoHeightInp.value * 100 + 20;
   const width = cargoWidthInp.value * 100 + 20;
   cargoDrawing.style.minWidth = `${width}px`;
   cargoDrawing.style.minHeight = `${height}px`;
@@ -104,7 +105,7 @@ cargoInputs.addEventListener("input", function (e) {
     weight * prices.pricePerWeigh + prices.transportationPrice;
   totalPrice = getAdditionalPrice(
     cargoWidthInp.value,
-    cargoHightInp.value,
+    cargoHeightInp.value,
     weight
   );
   finalCost.textContent =
@@ -116,13 +117,14 @@ confirmButton.addEventListener("click", function () {
   if (!answers.comments) {
     const comments = document.querySelector(".comment__input");
     answers.comments = comments.placeholder;
-    const values = Object.values(answers);
-    if (values.includes("")) {
-      return;
-    } else {
-      createModal();
-      modal.style.visibility = "visible";
-    }
+  }
+  const values = Object.values(answers);
+  if (values.includes("")) {
+    return;
+  } else {
+    body.classList.add("modal-open");
+    createModal();
+    modal.style.visibility = "visible";
   }
 });
 confirmButton.addEventListener("click", citiesInputValidation);
@@ -135,12 +137,13 @@ confirmButton.addEventListener("click", timeInputValidation);
 modal.addEventListener("click", function (e) {
   const cancel = document.querySelector(".modal__cancel");
   const submit = document.querySelector(".modal__submit");
-  if (e.target === modal) modal.style.visibility = "hidden";
-  if (e.target === cancel) modal.style.visibility = "hidden";
+  if (e.target === modal || e.target === cancel) {
+    modal.style.visibility = "hidden";
+    body.classList.remove("modal-open");
+  }
   if (e.target === submit) {
     const datasForSend = createJsonStringify(answers);
     modal.style.visibility = "hidden";
-    console.log(datasForSend);
   }
 });
 
@@ -230,7 +233,7 @@ function writeDownTheAnswers() {
   answers.phone = phoneInput.value;
   answers.comments = commentsInput.value;
   answers.width = +cargoWidthInp.value;
-  answers.hight = +cargoHightInp.value;
+  answers.height = +cargoHeightInp.value;
   answers.weight = parseInt(cargoWeight.textContent);
   answers.price = parseInt(finalCost.textContent);
 }
@@ -242,19 +245,21 @@ function createModal() {
   modal.insertAdjacentHTML(
     "afterbegin",
     `
-    <p class="recipient__city">Recipient city: ${answers.city}</p>
-    <p class="recipient__name">Full name: ${answers.name} ${answers.surname}</p>
-    <p class="recipient__phone">Recipient phone number: ${answers.phone}</p>
-    <p class="comments">Comments: </p>
+    <p class="recipient__city">Recipient city: <span class="modal-span"> ${answers.city}</span></p>
+    <p class="recipient__name">Full name: <span class="modal-span">${answers.name} ${answers.surname}</span></p>
+    <p class="recipient__phone">Recipient phone number: <span class="modal-span">${answers.phone}</span></p>
+    <p class="comments">Comments: <span class="modal-span">${answers.comments}</span></p>
     <div class="cargo__info-box">
-      <span class="cargo__width cargo__span">Cargo width: ${answers.width}m</span>
-      <span class="cargo__height cargo__span">Cargo height: ${answers.hight}m</span>
-      <span class="cargo__weight cargo__span">Cargo weight: ${answers.weight}kg</span>
+      <span class="cargo__width cargo__span">Cargo width: <span class="modal-span">${answers.width}m</span></span>
+      <span class="cargo__height cargo__span">Cargo height: <span class="modal-span">${answers.height}m</span></span>
+      <span class="cargo__weight cargo__span">Cargo weight: <span class="modal-span">${answers.weight}kg</span></span>
     </div>
-    <p class="delivery-date">Delivery date is: ${dateInput.value}</p>
-    <p class="delivery-time">Delivery time is: ${timeInput.value}</p>
-    <button type="submit" class="modal__submit">Submit</button>
-    <button class="modal__cancel">Cancel</button>
+    <p class="delivery-date">Delivery date is: <span class="modal-span">${dateInput.value}</span></p>
+    <p class="delivery-time">Delivery time is: <span class="modal-span">${timeInput.value}</span></p>
+    <div class="modal__buttons">
+      <button type="submit" class="modal__submit button">Submit</button>
+      <button class="modal__cancel button">Cancel</button>
+    </div>
   `
   );
 }
