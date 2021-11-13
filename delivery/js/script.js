@@ -96,8 +96,8 @@ cargoInputs.addEventListener("input", function (e) {
   );
   cargoWeight.textContent = weight + " kg";
 
-  const height = cargoHeightInp.value * 100 + 20;
-  const width = cargoWidthInp.value * 100 + 20;
+  const height = cargoHeightInp.value * 70 + 20;
+  const width = cargoWidthInp.value * 70 + 20;
   cargoDrawing.style.minWidth = `${width}px`;
   cargoDrawing.style.minHeight = `${height}px`;
 
@@ -144,6 +144,7 @@ modal.addEventListener("click", function (e) {
   if (e.target === submit) {
     const datasForSend = createJsonStringify(answers);
     modal.style.visibility = "hidden";
+    body.classList.remove("modal-open");
   }
 });
 
@@ -247,7 +248,7 @@ function createModal() {
     `
     <p class="recipient__city">Recipient city: <span class="modal-span"> ${answers.city}</span></p>
     <p class="recipient__name">Full name: <span class="modal-span">${answers.name} ${answers.surname}</span></p>
-    <p class="recipient__phone">Recipient phone number: <span class="modal-span">${answers.phone}</span></p>
+    <p class="recipient__phone">Phone: <span class="modal-span">${answers.phone}</span></p>
     <p class="comments">Comments: <span class="modal-span">${answers.comments}</span></p>
     <div class="cargo__info-box">
       <span class="cargo__width cargo__span">Cargo width: <span class="modal-span">${answers.width}m</span></span>
@@ -257,7 +258,7 @@ function createModal() {
     <p class="delivery-date">Delivery date is: <span class="modal-span">${dateInput.value}</span></p>
     <p class="delivery-time">Delivery time is: <span class="modal-span">${timeInput.value}</span></p>
     <div class="modal__buttons">
-      <button type="submit" class="modal__submit button">Submit</button>
+      <button type="submit" form='DeliveryForm' class="modal__submit button">Submit</button>
       <button class="modal__cancel button">Cancel</button>
     </div>
   `
@@ -316,7 +317,6 @@ function dateInputValidation() {
     err.textContent = dateInput.validationMessage;
   } else {
     undoError(dateInput, err);
-    err.textContent = "";
   }
 }
 
