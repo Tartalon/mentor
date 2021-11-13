@@ -163,7 +163,7 @@ body {
   display: flex;
 }
 
-.cargo__widht-box {
+.cargo__width-box {
   margin: 0;
   max-width: 50%;
 }
@@ -299,4 +299,19 @@ body {
 
 .modal-open {
   overflow: hidden;
+}
+
+@media screen and (max-width: 530px) {
+  .cargo__inputs {
+    flex-direction: column;
+  }
+
+  .cargo__width-box {
+    min-width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .cargo__height-box {
+    min-width: 100%;
+  }
 }
