@@ -213,6 +213,10 @@ body {
   max-width: max-content;
 }
 
+.date__error {
+  display: none;
+}
+
 .time__input {
   max-width: max-content;
 }
