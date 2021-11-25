@@ -83,12 +83,21 @@ cargoInputs.addEventListener("input", function (e) {
   let priceWithoutExtraCharge = 0;
   let totalPrice = 0;
 
-  if (target === cargoWidthRange || target === cargoHeightRange) {
-    cargoWidthInp.value = cargoWidthRange.value;
-    cargoHeightInp.value = cargoHeightRange.value;
-  } else if (target === cargoWidthInp || target === cargoHeightInp) {
-    cargoWidthRange.value = cargoWidthInp.value;
-    cargoHeightRange.value = cargoHeightInp.value;
+  if (target.value === "") target.value = 0.1;
+
+  switch (target) {
+    case cargoWidthRange:
+      cargoWidthInp.value = cargoWidthRange.value;
+      break;
+    case cargoHeightRange:
+      cargoHeightInp.value = cargoHeightRange.value;
+      break;
+    case cargoWidthInp:
+      cargoHeightRange.value = cargoWidthInp.value;
+      break;
+    case cargoHeightInp:
+      cargoHeightRange.value = cargoHeightInp.value;
+      break;
   }
 
   const weight = Math.round(
@@ -114,6 +123,13 @@ cargoInputs.addEventListener("input", function (e) {
 
 confirmButton.addEventListener("click", writeDownTheAnswers);
 confirmButton.addEventListener("click", function () {
+  citiesInputValidation();
+  nameInputValidation();
+  surnameInputValidation();
+  phoneInputValidation();
+  dateInputValidation();
+  timeInputValidation();
+
   if (!answers.comments) {
     const comments = document.querySelector(".comment__input");
     answers.comments = comments.placeholder;
@@ -127,12 +143,6 @@ confirmButton.addEventListener("click", function () {
     modal.style.visibility = "visible";
   }
 });
-confirmButton.addEventListener("click", citiesInputValidation);
-confirmButton.addEventListener("click", nameInputValidation);
-confirmButton.addEventListener("click", surnameInputValidation);
-confirmButton.addEventListener("click", phoneInputValidation);
-confirmButton.addEventListener("click", dateInputValidation);
-confirmButton.addEventListener("click", timeInputValidation);
 
 modal.addEventListener("click", function (e) {
   const cancel = document.querySelector(".modal__cancel");
@@ -227,6 +237,7 @@ function writeDownTheAnswers() {
   const surnameInput = document.querySelector("#SurnameInput");
   const phoneInput = document.querySelector("#PhoneInput");
   const commentsInput = document.querySelector(".comment__input");
+  const hour = +timeInput.value.split(":")[0];
 
   answers.city = citiesInput.value;
   answers.name = nameInput.value;
@@ -236,6 +247,8 @@ function writeDownTheAnswers() {
   answers.width = +cargoWidthInp.value;
   answers.height = +cargoHeightInp.value;
   answers.weight = parseInt(cargoWeight.textContent);
+  answers.date = dateInput.value >= getDeliveryDate() ? dateInput.value : "";
+  answers.time = hour >= 9 && hour <= 18 ? timeInput.value : "";
   answers.price = parseInt(finalCost.textContent);
 }
 
