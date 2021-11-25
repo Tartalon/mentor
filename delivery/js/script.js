@@ -54,6 +54,8 @@ const url =
   }
 })();
 
+dateInput.setAttribute("min", getDeliveryDate());
+
 dropdownButton.addEventListener("click", function () {
   citiesListWrapper.classList.toggle("hidden");
 });
@@ -63,8 +65,6 @@ form.addEventListener("click", function (e) {
     citiesListWrapper.classList.add("hidden");
   }
 });
-
-dateInput.setAttribute("min", getDeliveryDate());
 
 citiesInput.addEventListener("input", function (e) {
   citiesListWrapper.classList.remove("hidden");
@@ -122,6 +122,7 @@ cargoInputs.addEventListener("input", function (e) {
 });
 
 confirmButton.addEventListener("click", writeDownTheAnswers);
+
 confirmButton.addEventListener("click", function () {
   citiesInputValidation();
   nameInputValidation();
@@ -147,6 +148,7 @@ confirmButton.addEventListener("click", function () {
 modal.addEventListener("click", function (e) {
   const cancel = document.querySelector(".modal__cancel");
   const submit = document.querySelector(".modal__submit");
+
   if (e.target === modal || e.target === cancel) {
     modal.style.visibility = "hidden";
     body.classList.remove("modal-open");
@@ -177,6 +179,32 @@ function createLi(arr) {
     li.textContent = city;
     citiesList.append(li);
   }
+}
+
+function createModal() {
+  const modal = document.querySelector(".modal__box");
+  modal.innerHTML = "";
+
+  modal.insertAdjacentHTML(
+    "afterbegin",
+    `
+    <p class="recipient__city">Recipient city: <span class="modal-span"> ${answers.city}</span></p>
+    <p class="recipient__name">Full name: <span class="modal-span">${answers.name} ${answers.surname}</span></p>
+    <p class="recipient__phone">Phone: <span class="modal-span">${answers.phone}</span></p>
+    <p class="comments">Comments: <span class="modal-span">${answers.comments}</span></p>
+    <div class="cargo__info-box">
+      <span class="cargo__width cargo__span">Cargo width: <span class="modal-span">${answers.width}m</span></span>
+      <span class="cargo__height cargo__span">Cargo height: <span class="modal-span">${answers.height}m</span></span>
+      <span class="cargo__weight cargo__span">Cargo weight: <span class="modal-span">${answers.weight}kg</span></span>
+    </div>
+    <p class="delivery-date">Delivery date is: <span class="modal-span">${dateInput.value}</span></p>
+    <p class="delivery-time">Delivery time is: <span class="modal-span">${timeInput.value}</span></p>
+    <div class="modal__buttons">
+      <button type="submit" form='DeliveryForm' class="modal__submit button">Submit</button>
+      <button class="modal__cancel button">Cancel</button>
+    </div>
+  `
+  );
 }
 
 function getCitiesList(arr) {
@@ -252,32 +280,6 @@ function writeDownTheAnswers() {
   answers.price = parseInt(finalCost.textContent);
 }
 
-function createModal() {
-  const modal = document.querySelector(".modal__box");
-  modal.innerHTML = "";
-
-  modal.insertAdjacentHTML(
-    "afterbegin",
-    `
-    <p class="recipient__city">Recipient city: <span class="modal-span"> ${answers.city}</span></p>
-    <p class="recipient__name">Full name: <span class="modal-span">${answers.name} ${answers.surname}</span></p>
-    <p class="recipient__phone">Phone: <span class="modal-span">${answers.phone}</span></p>
-    <p class="comments">Comments: <span class="modal-span">${answers.comments}</span></p>
-    <div class="cargo__info-box">
-      <span class="cargo__width cargo__span">Cargo width: <span class="modal-span">${answers.width}m</span></span>
-      <span class="cargo__height cargo__span">Cargo height: <span class="modal-span">${answers.height}m</span></span>
-      <span class="cargo__weight cargo__span">Cargo weight: <span class="modal-span">${answers.weight}kg</span></span>
-    </div>
-    <p class="delivery-date">Delivery date is: <span class="modal-span">${dateInput.value}</span></p>
-    <p class="delivery-time">Delivery time is: <span class="modal-span">${timeInput.value}</span></p>
-    <div class="modal__buttons">
-      <button type="submit" form='DeliveryForm' class="modal__submit button">Submit</button>
-      <button class="modal__cancel button">Cancel</button>
-    </div>
-  `
-  );
-}
-
 function citiesInputValidation() {
   const err = document.querySelector(".cities__error");
   const cities = Array.from(citiesList.children).map((el) => el.textContent);
@@ -328,6 +330,7 @@ function dateInputValidation() {
   if (+getDeliveryDate().split("-")[2] > +dateInput.value.split("-")[2]) {
     showInputErr(dateInput, err);
     err.textContent = dateInput.validationMessage;
+    return;
   } else {
     undoError(dateInput, err);
   }
@@ -345,7 +348,7 @@ function timeInputValidation() {
 }
 
 function showInputErr(input, err) {
-  input.style.outline = "2px solid red";
+  input.style.borderColor = "red";
   err.style.display = "inline-block";
   input.focus();
 }

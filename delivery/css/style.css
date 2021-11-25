@@ -64,6 +64,7 @@ body {
 .input__error {
   font-size: 12px;
   color: red;
+  padding: 5px 0 0 0;
 }
 
 .form__cities {
@@ -212,6 +213,10 @@ body {
   max-width: max-content;
 }
 
+.date__error {
+  display: none;
+}
+
 .time__input {
   max-width: max-content;
 }
@@ -251,7 +256,7 @@ body {
 /* ================ Modal ================= */
 
 .modal {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
