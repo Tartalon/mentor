@@ -136,6 +136,9 @@ confirmButton.addEventListener("click", function () {
     answers.comments = comments.placeholder;
   }
   const values = Object.values(answers);
+  console.log(values);
+  console.log(getDeliveryDate() < dateInput.value);
+  console.log(getDeliveryDate(), dateInput.value);
   if (values.includes("")) {
     return;
   } else {
@@ -242,9 +245,14 @@ function getDeliveryDate() {
     dateInput.valueAsDate = today;
   }
   const afterThreeDays = new Date(today.setDate(today.getDate() + 3));
+  let day = afterThreeDays.getDate();
+  if (afterThreeDays.getDate() < 10) {
+    day = `0${afterThreeDays.getDate()}`;
+  }
   const deliweryDay = `${afterThreeDays.getFullYear()}-${
     afterThreeDays.getMonth() + 1
-  }-${afterThreeDays.getDate()}`;
+  }-${day}`;
+  console.log(day);
   return deliweryDay;
 }
 
