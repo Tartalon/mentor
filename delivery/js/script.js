@@ -138,8 +138,7 @@ confirmButton.addEventListener('click', function () {
 	}
 	const values = Object.values(answers);
 	console.log(values);
-	// console.log(getDeliveryDate() < dateInput.value);
-	// console.log(getDeliveryDate(), dateInput.value);
+
 	if (values.includes('')) {
 		return;
 	} else {
@@ -168,6 +167,7 @@ clearButon.addEventListener('click', function (e) {
 	cargoDrawing.style.minWidth = '';
 	cargoDrawing.style.minHeight = '';
 	cargoWeight.textContent = '1 kg';
+	dateInput.valueAsDate = new Date();
 	finalCost.textContent = '37 UAH';
 });
 
@@ -275,6 +275,8 @@ function writeDownTheAnswers() {
 	const phoneInput = document.querySelector('#PhoneInput');
 	const commentsInput = document.querySelector('.comment__input');
 	const hour = +timeInput.value.split(':')[0];
+	const parseInputDate = Date.parse(dateInput.value);
+	const parseDeliveryDate = Date.parse(getDeliveryDate());
 
 	answers.city = citiesInput.value;
 	answers.name = nameInput.value;
@@ -284,10 +286,7 @@ function writeDownTheAnswers() {
 	answers.width = +cargoWidthInp.value;
 	answers.height = +cargoHeightInp.value;
 	answers.weight = parseInt(cargoWeight.textContent);
-	answers.date =
-		Date.parse(dateInput.value) >= Date.parse(getDeliveryDate())
-			? dateInput.value
-			: '';
+	answers.date = parseInputDate >= parseDeliveryDate ? dateInput.value : '';
 	answers.time = hour >= 9 && hour <= 18 ? timeInput.value : '';
 	answers.price = parseInt(finalCost.textContent);
 }
