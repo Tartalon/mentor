@@ -208,7 +208,56 @@
     </section>
 
     <div class="modal">
-      <div class="modal__box"></div>
+      <div class="modal__box">
+        <p class="recipient__city">
+          Recipient city:
+          <span class="modal-span" data-city> ${answers.city}</span>
+        </p>
+        <p class="recipient__name">
+          Full name:
+          <span class="modal-span" data-name
+            >${answers.name} ${answers.surname}</span
+          >
+        </p>
+        <p class="recipient__phone">
+          Phone: <span class="modal-span" data-phone>${answers.phone}</span>
+        </p>
+        <p class="comments">
+          Comments:
+          <span class="modal-span" data-comments>${answers.comments}</span>
+        </p>
+        <div class="cargo__info-box">
+          <span class="cargo__width cargo__span"
+            >Cargo width:
+            <span class="modal-span" data-width>${answers.width}m</span></span
+          >
+          <span class="cargo__height cargo__span"
+            >Cargo height:
+            <span class="modal-span" data-height>${answers.height}m</span></span
+          >
+          <span class="cargo__weight cargo__span"
+            >Cargo weight: <span class="modal-span" data-weight></span
+          ></span>
+        </div>
+        <p class="delivery-date">
+          Delivery date is:
+          <span class="modal-span" data-date></span>
+        </p>
+        <p class="delivery-time">
+          Delivery time is:
+          <span class="modal-span" data-time></span>
+        </p>
+        <div class="modal__buttons">
+          <button
+            type="submit"
+            form="DeliveryForm"
+            class="modal__submit button"
+          >
+            Submit
+          </button>
+          <button class="modal__cancel button">Cancel</button>
+        </div>
+      </div>
     </div>
 
     <script src="https://unpkg.com/imask"></script>
