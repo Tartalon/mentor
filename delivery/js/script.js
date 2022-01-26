@@ -137,7 +137,6 @@ confirmButton.addEventListener('click', function () {
 		answers.comments = comments.placeholder;
 	}
 	const values = Object.values(answers);
-	console.log(values);
 
 	if (values.includes('')) {
 		return;
@@ -255,13 +254,8 @@ function getDeliveryDate() {
 		day = `0${afterThreeDays.getDate()}`;
 	}
 	const deliveryDay = `${afterThreeDays.getFullYear()}-${month}-${day}`;
-
-	console.log(afterThreeDays.getMonth() + 1);
-
 	return deliveryDay;
 }
-
-console.log(getDeliveryDate());
 
 function getAdditionalPrice(width, height, weight) {
 	const maxWeight = 500;
@@ -376,6 +370,7 @@ function undoError(input, err) {
 }
 
 function createJsonStringify(obj) {
+	console.log(JSON.stringify(obj));
 	return JSON.stringify(obj);
 }
 
