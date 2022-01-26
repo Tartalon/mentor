@@ -152,12 +152,12 @@ modal.addEventListener('click', function (e) {
 	const submit = document.querySelector('.modal__submit');
 
 	if (e.target === modal || e.target === cancel) {
-		modal.style.visibility = 'hidden';
+		modal.style.display = 'none';
 		body.classList.remove('modal-open');
 	}
 	if (e.target === submit) {
 		const datasForSend = createJsonStringify(answers);
-		modal.style.visibility = 'hidden';
+		modal.style.display = 'none';
 		body.classList.remove('modal-open');
 	}
 });
@@ -277,6 +277,7 @@ function writeDownTheAnswers() {
 	const hour = +timeInput.value.split(':')[0];
 	const parseInputDate = Date.parse(dateInput.value);
 	const parseDeliveryDate = Date.parse(getDeliveryDate());
+	console.log(parseDeliveryDate);
 
 	answers.city = citiesInput.value;
 	answers.name = nameInput.value;
