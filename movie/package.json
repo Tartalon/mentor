@@ -1,0 +1,21 @@
+{
+  "name": "gulpfirst",
+  "version": "1.0.0",
+  "description": "First gulp",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gulp"
+  ],
+  "author": "Vovka",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  },
+  "dependencies": {
+    "gulp-cli": "^2.3.0"
+  }
+}
