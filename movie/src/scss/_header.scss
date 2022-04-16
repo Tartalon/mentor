@@ -1,0 +1,21 @@
+.logo {
+  &__link {
+  display: block;
+  width: 155px;
+  }
+
+  &__image {
+    width: 100%;
+  }
+}
+
+.nav {
+  &__list {
+  display: flex;
+  }
+
+  &__item {
+    margin-right: 30px;
+  }
+}
+
