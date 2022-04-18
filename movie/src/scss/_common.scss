@@ -1,43 +1,25 @@
-// Fonts 
+// Fonts
 
 /* source-sans-pro-regular - latin */
 @font-face {
   font-family: 'Source Sans Pro';
   font-style: normal;
   font-weight: 400;
-  src: url('../fonts/source-sans-pro-v19-latin-regular.eot'); /* IE9 Compat Modes */
-  src: local(''),
-       url('../fonts/source-sans-pro-v19-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../fonts/source-sans-pro-v19-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-       url('../fonts/source-sans-pro-v19-latin-regular.woff') format('woff'), /* Modern Browsers */
-       url('../fonts/source-sans-pro-v19-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('../fonts/source-sans-pro-v19-latin-regular.svg#SourceSansPro') format('svg'); /* Legacy iOS */
+  src: url('../fonts/source-sans-pro-v19-latin-regular.woff2') format('woff2');
 }
 /* source-sans-pro-600 - latin */
 @font-face {
   font-family: 'Source Sans Pro';
   font-style: normal;
   font-weight: 600;
-  src: url('../fonts/source-sans-pro-v19-latin-600.eot'); /* IE9 Compat Modes */
-  src: local(''),
-       url('../fonts/source-sans-pro-v19-latin-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../fonts/source-sans-pro-v19-latin-600.woff2') format('woff2'), /* Super Modern Browsers */
-       url('../fonts/source-sans-pro-v19-latin-600.woff') format('woff'), /* Modern Browsers */
-       url('../fonts/source-sans-pro-v19-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('../fonts/source-sans-pro-v19-latin-600.svg#SourceSansPro') format('svg'); /* Legacy iOS */
+  src: url('../fonts/source-sans-pro-v19-latin-600.woff2') format('woff2');
 }
 /* source-sans-pro-700 - latin */
 @font-face {
   font-family: 'Source Sans Pro';
   font-style: normal;
   font-weight: 700;
-  src: url('../fonts/source-sans-pro-v19-latin-700.eot'); /* IE9 Compat Modes */
-  src: local(''),
-       url('../fonts/source-sans-pro-v19-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('../fonts/source-sans-pro-v19-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
-       url('../fonts/source-sans-pro-v19-latin-700.woff') format('woff'), /* Modern Browsers */
-       url('../fonts/source-sans-pro-v19-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('../fonts/source-sans-pro-v19-latin-700.svg#SourceSansPro') format('svg'); /* Legacy iOS */
+  src: url('../fonts/source-sans-pro-v19-latin-700.woff2') format('woff2');
 }
 
 // Root
@@ -45,7 +27,7 @@
 :root {
   // Fonts
 
-  --main-font: 
+  --main-font:
 }
 
 
