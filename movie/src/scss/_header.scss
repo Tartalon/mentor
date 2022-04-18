@@ -1,3 +1,8 @@
+.tm-header {
+  background-color: #032541;
+  padding: 20px 0;
+}
+
 .logo {
   &__link {
   display: block;
@@ -16,6 +21,12 @@
 
   &__item {
     margin-right: 30px;
+  }
+
+  &__link {
+    font-weight: 600;
+    line-height: 1.5;
+    color: var(--white);
   }
 }
 

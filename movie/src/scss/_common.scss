@@ -27,7 +27,12 @@
 :root {
   // Fonts
 
-  --main-font:
+  --main-font: Source Sans Pro, Arial, sans-serif;
+  --base-size: 16px;
+
+  // Colors
+
+  --white: #fff;
 }
 
 
@@ -42,7 +47,8 @@
 body, html {
 	scroll-behavior: smooth;
 	font-size: 100%;
-	// font-family: $main-font;
+	font-family: var(--main-font);
+  font-size: var(--base-size);
 	min-height: 100vh;
 }
 
