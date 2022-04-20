@@ -1,16 +1,13 @@
 <header class="tm-header">
   <div class="container">
-    <div class="row">
-      <div class="col-2 logo">
-        <a href="#" class="logo__link">
-          <img
-            src="../img/logotype.png"
-            alt="logotype TMDB"
-            class="logo__image"
-          />
-        </a>
-      </div>
-      <div class="col-4 tm-header__nav">
+    <div class="row tm-header__wrapper">
+      <div class="col-6 tm-header__nav">
+        <div class="logo">
+          <a href="#" class="logo__link">
+            <img src="../img/logotype.png" alt="logotype TMDB" class="logo__image" />
+          </a>
+        </div>
+
         <nav class="tm-header__nav">
           <ul class="nav__list">
             <li class="nav__item">
@@ -32,13 +29,81 @@
                 </ul>
               </div>
             </li>
-            <li class="nav__item"><a href="#" class="nav__link">Серіали</a></li>
-            <li class="nav__item"><a href="#" class="nav__link">Персони</a></li>
-            <li class="nav__item"><a href="#" class="nav__link">Ще</a></li>
+
+            <li class="nav__item">
+              <a href="#" class="nav__link">Серіали</a>
+              <div class="nav-popup">
+                <ul class="nav-popup__list">
+                  <li class="nav-popup__item">
+                    <a href="#" class="nav-popup__link">Популярні</a>
+                  </li>
+                  <li class="nav-popup__item">
+                    <a href="#" class="nav-popup__link">Сьогодні в ефірі</a>
+                  </li>
+                  <li class="nav-popup__item">
+                    <a href="#" class="nav-popup__link">Зараз по телевізору</a>
+                  </li>
+                  <li class="nav-popup__item">
+                    <a href="#" class="nav-popup__link">Рейтингові</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="nav__item">
+              <a href="#" class="nav__link">Персони</a>
+              <div class="nav-popup">
+                <ul class="nav-popup__list">
+                  <li class="nav-popup__item">
+                    <a href="#" class="nav-popup__link">Популярні</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="nav__item">
+              <a href="#" class="nav__link">Ще</a>
+              <div class="nav-popup">
+                <ul class="nav-popup__list">
+                  <li class="nav-popup__item">
+                    <a href="#" class="nav-popup__link">Обговорення</a>
+                  </li>
+                  <li class="nav-popup__item">
+                    <a href="#" class="nav-popup__link">Лідери</a>
+                  </li>
+                  <li class="nav-popup__item">
+                    <a href="#" class="nav-popup__link">Підтримка</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
           </ul>
         </nav>
       </div>
-      <div class="col-6">3</div>
+
+      <div class="col-6">
+        <div class="tm-header__controls">
+          <ul class="controls__list">
+            <li class="controls__item">
+              <button type="button" class="controls__language language-button">UK</button>
+            </li>
+            <li class="controls__item">
+              <a href="#" class="controls__link">Увійти</a>
+            </li>
+            <li class="controls__item">
+              <a href="#" class="controls__link">Приєднатися до TMDB</a>
+            </li>
+            <li class="controls__item">
+              <button type="button" class="controls__search">
+                <svg class="search-icon">
+                  <use xlink:href="#search"></use>
+                </svg>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </header>
+@@include('./svg.html', {});

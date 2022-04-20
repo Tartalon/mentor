@@ -1,12 +1,26 @@
 .tm-header {
   background-color: #032541;
   padding: 20px 0;
+  color: var(--white);
+
+  &__nav {
+    display: flex;
+    align-items: baseline;
+  }
+
+  &__wrapper {
+    padding: 0 40px;
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: end;
+    
+  }
 }
 
 .logo {
-  display: flex;
-  justify-content: end;
-  align-items: center;
+  margin-right: 10px;
 
   &__link {
   display: inline-block;
@@ -38,21 +52,43 @@
     font-weight: 600;
     color: var(--white);
     padding: 8px;
+    transition: var(--transition);
 
     &:hover {
       color: var(--white);
+      filter: brightness(.80);
+    }
+
+    &:hover ~ .nav-popup,
+    &:active ~ .nav-popup,
+    &:focus ~ .nav-popup {
+      // display: block;
+
+      visibility: visible;
+      opacity: 1;
     }
   }
 }
 
 .nav-popup {
+  // display: none;
+
+  visibility: hidden;
+  opacity: 0;
   position: absolute;
   top: 35px;
   left: 0;
   background: var(--white);
+  color: var(--black);
   padding: 15px 20px;
-  width: 180px;
+  min-width: 180px;
   border-radius: 5px;
+  transition: var(--transition);
+
+  &:hover {
+    visibility: visible;
+    opacity: 1;
+  }
 
   &__item {
     margin-bottom: 10px;
@@ -67,9 +103,63 @@
   &__link {
     padding: 3px;
     letter-spacing: .05em;
+    display: block;
+    width: max-content;
+    
 
     &:hover {
       color: var(--black);
     }
   }
+}
+
+.controls {
+  &__list {
+    display: flex;
+    align-items: baseline;
+  }
+
+  &__item {
+    margin-right: 30px;
+  }
+
+  &__language {
+    border: 1px solid var(--white);
+    border-radius: 3px;
+    color: var(--white);
+    outline: none;
+    background-color: transparent;
+    padding: 3px 5px;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: all .2s linear;
+
+    &:hover {
+      color: var(--black);
+      background-color: #fff;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    color: var(--white);
+    font-weight: 600;
+    transition: var(--transition);
+
+    &:hover {
+      color: var(--white);
+      filter: brightness(.80);
+    }
+  }
+
+  &__search {
+    outline: none;
+    border: none;
+    background-color: transparent;
+  }
+}
+
+.search-icon {
+  width: 29px;
+  height: 29px;
 }
