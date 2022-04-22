@@ -128,9 +128,6 @@
           </li>
           <li class="tm-header-mobile__item">
             <a href="#" class="tm-header-mobile__link">
-              <!-- <svg class="mobile-logo">
-                <use xlink:href="#mobileLogo"></use>
-              </svg> -->
               <img src="./img/mobileLogo.svg" alt="The Movie Database" width="55" height="auto" />
             </a>
           </li>
@@ -157,7 +154,31 @@
     </div>
   </div>
 </header>
-<!-- Search-icon -->
+
+    <main class="main"><section class="section greeting-section">
+  <div class="container greeting__container">
+    <div class="row">
+      <div class="col greeting__content">
+        <div class="greeting__title">
+          <h2>Ласкаво просимо.</h2>
+          <h3>Мільйони фільмів, серіалів, людей. Досліджуйте зараз.</h3>
+        </div>
+        <div class="greeting__search">
+          <form action="/search" class="search-form">
+            <input
+              type="search"
+              class="search-form__input"
+              placeholder="Пошук фільму, серіалу, людини"
+            />
+            <input type="submit" class="search-form__submit" value="Search" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+    <footer class="footer"></footer> <!-- Search-icon -->
 <svg xmlns="http://www.w3.org/2000/svg" display="none">
   <symbol id="search" viewBox="0 0 32 32">
     <path
@@ -178,9 +199,6 @@
   </symbol>
 </svg>
 ;
-
-    <main class="main"></main>
-    <footer class="footer"></footer>
 
     <script src="js/app.min.js"></script>
   </body>

@@ -1,0 +1,42 @@
+.greeting {
+  &__container  {
+    background-image: url(../img/bacground.jpg);
+  }
+
+  &__content {
+    padding: 30px 40px;
+    
+  }
+
+  &__title {
+    margin-bottom: 50px;
+  }
+
+  &__title h2 {
+    font-size: 3em;
+    font-weight: 700;
+  }
+}
+
+.search-form {
+  position: relative;
+
+  &__input {
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    line-height: 46px;
+    color: rgba(0,0,0,0.5);
+    border: none;
+    border-radius: 30px;
+  }
+
+  &__submit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    padding: 10px 26px;
+    background: linear-gradient(to right, rgba(var(--lightGreen), 1) 0%, rgba(var(--lightBlue), 1) 100%);
+  }
+}

@@ -2,21 +2,21 @@
 
 /* source-sans-pro-regular - latin */
 @font-face {
-  font-family: 'Source Sans Pro';
+  font-family: "Source Sans Pro";
   font-style: normal;
   font-weight: 400;
   src: url('../fonts/source-sans-pro-v19-latin-regular.woff2') format('woff2');
 }
 /* source-sans-pro-600 - latin */
 @font-face {
-  font-family: 'Source Sans Pro';
+  font-family: "Source Sans Pro";
   font-style: normal;
   font-weight: 600;
   src: url('../fonts/source-sans-pro-v19-latin-600.woff2') format('woff2');
 }
 /* source-sans-pro-700 - latin */
 @font-face {
-  font-family: 'Source Sans Pro';
+  font-family: "Source Sans Pro";
   font-style: normal;
   font-weight: 700;
   src: url('../fonts/source-sans-pro-v19-latin-700.woff2') format('woff2');
@@ -27,13 +27,15 @@
 :root {
   // Fonts
 
-  --main-font: Source Sans Pro, Arial, sans-serif;
+  --main-font: "Source Sans Pro", Arial, sans-serif;
   --base-size: 16px;
 
   // Colors
 
   --white: #fff;
   --black: #000;
+  --lightBlue: rgb(1, 180, 228);
+  --lightGreen: rgba(30,213,169);
 
   --transition: all .25s linear;
 }
@@ -53,6 +55,10 @@ body, html {
 	font-family: var(--main-font);
   font-size: var(--base-size);
 	min-height: 100vh;
+}
+
+.section {
+  color: var(--white);
 }
 
 ul {
